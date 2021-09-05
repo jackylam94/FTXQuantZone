@@ -1,0 +1,7 @@
+tmpOpen15m: get_variable("tmpOpen15m")
+tmpHigh15m: max(get_variable("tmpHigh15m"), last_trade_price("BTC-PERP"))
+tmpLow15m: min(get_variable("tmpLow15m"), last_trade_price("BTC-PERP"))
+tmpClose15m: last_trade_price("BTC-PERP")
+update15m: 2 if floor(time) > get_variable("wakeUpTime15m") else 1
+timeDiff: floor(time) - get_variable("lastTime")
+lastTime: floor(time)
