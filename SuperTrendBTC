@@ -1,4 +1,5 @@
-## UpdateTrade15m ##
+## UpdateTrade15m ## <br>
+===================<br>
 tmpOpen15m: get_variable("tmpOpen15m")
 tmpHigh15m: max(get_variable("tmpHigh15m"), last_trade_price("BTC-PERP"))
 tmpLow15m: min(get_variable("tmpLow15m"), last_trade_price("BTC-PERP"))
