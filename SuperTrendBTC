@@ -32,5 +32,24 @@ up:
 down:
 (get_variable("tmpHigh15m") + get_variable("tmpLow15m")) / 2 + (2 * get_variable("prevAtr") + max(max(get_variable("tmpHigh15m") - get_variable("tmpLow15m"), abs(get_variable("tmpHigh15m") - get_variable("prevClose15m"))), abs(get_variable("tmpLow15m") - get_variable("prevClose15m")))) / 3
 
+update15m: 1
+
+prevAtr:
+(2 * get_variable("prevAtr") + max(max(get_variable("tmpHigh15m") - get_variable("tmpLow15m"), abs(get_variable("tmpHigh15m") - get_variable("prevClose15m"))), abs(get_variable("tmpLow15m") - get_variable("prevClose15m")))) / 3
+
+prevTrendUp:
+max(get_variable("up"), get_variable("prevTrendUp")) if get_variable("prevClose15m") > get_variable("prevTrendUp") else get_variable("up")
+
+prevTrendDown:
+min(get_variable("down"), get_variable("prevTrendDown")) if get_variable("prevClose15m") < get_variable("prevTrendDown") else get_variable("down")
+
+trend:
+1 if get_variable("tmpClose15m") > get_variable("prevTrendDown") else -1 if get_variable("tmpClose15m") < get_variable("prevTrendUp") else get_variable("trend")
+
+prevClose: get_variable("tmpClose15m")
+tmpOpen15m: last_trade_price("BTC-PERP")
+tmpHigh15m: last_trade_price("BTC-PERP")
+tmpLow15m: last_trade_price("BTC-PERP")
+tmpClose15m: last_trade_price("BTC-PERP")
 
 https://help.ftx.com/hc/en-us/articles/360041935611-Quant-Zone-Rules-Examples
