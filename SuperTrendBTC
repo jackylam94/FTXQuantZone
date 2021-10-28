@@ -52,4 +52,5 @@ tmpHigh15m: last_trade_price("BTC-PERP")
 tmpLow15m: last_trade_price("BTC-PERP")
 tmpClose15m: last_trade_price("BTC-PERP")
 
-https://help.ftx.com/hc/en-us/articles/360041935611-Quant-Zone-Rules-Examples
+
+
